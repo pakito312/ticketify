@@ -10,13 +10,10 @@ class CreateTicketRepliesTable extends Migration
     {
         Schema::create('ticket_replies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ticket_id');
-            $table->unsignedBigInteger('user_id'); // Peut être utilisateur ou admin
+            $table->integer('ticket_id');
+            $table->integer('user_id'); // Peut être utilisateur ou admin
             $table->text('message');
             $table->timestamps();
-
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

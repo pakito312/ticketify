@@ -21,11 +21,6 @@ class TicketifyServiceProvider extends ServiceProvider
     $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     $this->loadViewsFrom(__DIR__.'/../resources/views', 'ticketify');
 
-    if ($this->app->runningInConsole()) {
-        $this->commands([
-            \Paki\Ticketify\Console\Commands\InstallTicketify::class,
-        ]);
-    }
 }
 
 }
