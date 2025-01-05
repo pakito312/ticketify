@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Paki\\Ticketify\\TicketifyServiceProvider"
+                "Paki\\Ticketify\\Providers\\TicketifyServiceProvider"
             ]
         }
     }

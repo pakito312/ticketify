@@ -1,5 +1,5 @@
 <?php
-namespace Paki\Ticketify;
+namespace Paki\Ticketify\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
