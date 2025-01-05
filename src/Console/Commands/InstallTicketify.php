@@ -15,7 +15,7 @@ class InstallTicketify extends Command
         
         // Publier les fichiers de configuration
         $this->call('vendor:publish', [
-            '--provider' => "Paki\Ticketify\TicketifyServiceProvider"
+            '--provider' => "Paki\Ticketify\Providers\TicketifyServiceProvider"
         ]);
 
         // Appliquer les migrations
