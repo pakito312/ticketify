@@ -1,6 +1,6 @@
-@extends(config('ticketify.layout_admin'))
+@extends(config('ticketify.layout_admin','layouts.app'))
 
-@section(config('ticketify.section_admin'))
+@section(config('ticketify.section_admin','content'))
 <div class="container mt-4">
     <h1>Ticket #{{ $ticket->id }}</h1>
     <p><strong>Sujet :</strong> {{ $ticket->subject }}</p>

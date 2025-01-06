@@ -1,6 +1,5 @@
-@extends(config('ticketify.layout_front'))
-
-@section(config('ticketify.section_font'))
+@extends(config('ticketify.layout_front', 'layouts.app'))
+@section(config('ticketify.section_font', 'content'))
 <div class="container mt-4">
     <h1>Créer un Nouveau Ticket</h1>
     <form action="{{ route('tickets.store') }}" method="POST">

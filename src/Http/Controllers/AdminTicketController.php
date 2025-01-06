@@ -2,8 +2,10 @@
 
 namespace Paki\Ticketify\Http\Controllers;
 
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Paki\Ticketify\Models\Ticket;
+use Paki\Ticketify\Models\TicketReply;
 
 class AdminTicketController extends Controller
 {
@@ -27,10 +29,6 @@ class AdminTicketController extends Controller
     {
         $ticket = Ticket::findOrFail($id);
     
-        if ($ticket->user_id != auth()->id() && !auth()->user()->isAdmin()) {
-            abort(403);
-        }
-    
         $validated = $request->validate([
             'message' => 'required|string',
         ]);
@@ -46,5 +44,14 @@ class AdminTicketController extends Controller
         }
     
         return redirect()->route('admin.tickets.show', $ticket->id)->with('success', 'Réponse ajoutée avec succès.');
+    }
+
+    public function close($id)
+    {
+        $ticket = Ticket::findOrFail($id);
+    
+        $ticket->update(['status' => 'close']);
+    
+        return redirect()->route('admin.tickets.show', $ticket->id)->with('success', 'Ticket fermé avec succès.');
     }
 }

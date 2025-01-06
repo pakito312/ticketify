@@ -1,6 +1,6 @@
-@extends(config('ticketify.layout_admin'))
+@extends(config('ticketify.layout_admin','layouts.app'))
 
-@section(config('ticketify.section_admin'))
+@section(config('ticketify.section_admin','content'))
 <div class="container mt-4">
     <h1>Tickets des Utilisateurs</h1>
     <table class="table">
@@ -17,7 +17,7 @@
             @foreach($tickets as $ticket)
                 <tr>
                     <td>{{ $ticket->id }}</td>
-                    <td>{{ $ticket->subject }}</td>
+                    <td>{{ $ticket->title }}</td>
                     <td>@if ($ticket->status === 'open')
                         <span class="badge bg-warning">Ouvert</span>
                     @elseif ($ticket->status === 'resolved')

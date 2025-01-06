@@ -1,6 +1,6 @@
-@extends(config('ticketify.layout_admin'))
+@extends(config('ticketify.layout_admin','layouts.app'))
 
-@section(config('ticketify.section_admin'))
+@section(config('ticketify.section_admin','content'))
 <div class="container mt-4">
     <h1>Tickets Manager</h1>
     <div class="row mb-4">

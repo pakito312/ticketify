@@ -1,6 +1,5 @@
-@extends(config('ticketify.layout_front'))
-
-@section(config('ticketify.section_font'))
+@extends(config('ticketify.layout_front', 'layouts.app'))
+@section(config('ticketify.section_font', 'content'))
 <div class="container mt-4">
     <h1>Liste des Tickets</h1>
     <a href="{{ route('tickets.create') }}" class="btn btn-primary mb-3">Créer un Nouveau Ticket</a>
@@ -18,7 +17,7 @@
             @foreach ($tickets as $ticket)
                 <tr>
                     <td>{{ $ticket->id }}</td>
-                    <td>{{ $ticket->subject }}</td>
+                    <td>{{ $ticket->title }}</td>
                     <td>
                         @if ($ticket->status === 'open')
                             <span class="badge bg-warning">Ouvert</span>

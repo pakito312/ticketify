@@ -1,6 +1,7 @@
 <?php
 namespace Paki\Ticketify\Http\Controllers;
 
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Paki\Ticketify\Models\Ticket;
 use Paki\Ticketify\Models\TicketReply;
@@ -9,7 +10,7 @@ class TicketController extends Controller
 {
     public function index()
     {
-        $tickets = Ticket::where('user_id', auth()->id())->get();
+        $tickets = Ticket::where('user_id', auth()->id())->paginate(20);
         return view('ticketify::tickets.index', compact('tickets'));
     }
 
@@ -27,7 +28,7 @@ class TicketController extends Controller
 
         Ticket::create([
             'user_id' => auth()->id(),
-            'subject' => $validated['subject'],
+            'title' => $validated['subject'],
             'description' => $validated['description'],
             'status' => 'open',
         ]);
@@ -71,5 +72,15 @@ class TicketController extends Controller
 
     return redirect()->route('tickets.show', $ticket->id)->with('success', 'Réponse ajoutée avec succès.');
 }
+
+public function markAsResolved($id)
+{
+    $ticket = Ticket::findOrFail($id);
+
+    $ticket->update(['status' => 'resolved']);
+
+    return redirect()->route('tickets.index')->with('success', 'Le ticket a été marqué comme résolu.');
+}
+
 
 }
