@@ -56,13 +56,13 @@
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const ctx = document.getElementById('ticketChart').getContext('2d');
+    const ctx = document.getElementById('ticketChart');
     const ticketChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Ouverts', 'Résolus', 'En Attente'],
+            labels: ['Ouverts', 'Résolus', 'Fermés'],
             datasets: [{
-                data: [{{ $openTickets }}, {{ $resolvedTickets }}, {{ $pendingTickets }}],
+                data: [{{ $openTickets }}, {{ $resolvedTickets }}, {{ $closeTickets }}],
                 backgroundColor: ['#f39c12', '#00a65a', '#d2d6de'],
             }]
         },

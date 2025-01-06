@@ -13,7 +13,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('tickets/{ticket}/resolve', [TicketController::class, 'markAsResolved'])->name('tickets.resolve');
 });
 
-Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
+Route::middleware(['web','auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::get('/dashboard/tickets', [AdminTicketController::class, 'dashboard'])->name('admin.tickets.dashboard');
     Route::get('tickets', [AdminTicketController::class, 'index'])->name('admin.tickets.index');
     Route::get('tickets/{ticket}', [AdminTicketController::class, 'show'])->name('admin.tickets.show');
