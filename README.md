@@ -1,5 +1,4 @@
 
-```markdown
 # Ticketify - Package Laravel pour la gestion de tickets de support
 
 Ticketify est un package Laravel simple et puissant pour gérer les tickets de support client. Il offre un tableau de bord pour l'administrateur, une interface simple pour la gestion des tickets, et des notifications pour l'équipe technique.
