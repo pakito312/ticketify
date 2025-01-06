@@ -18,6 +18,13 @@ class AdminTicketController extends Controller
             'closeTickets' => Ticket::where('status', 'close')->count(),
         ]);
     }
+    
+    public function index()
+    {
+        return view('ticketify::admin.index', [
+            'tickets' => Ticket::all(),
+        ]);
+    }
 
     public function show($id)
     {
